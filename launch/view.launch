@@ -1,0 +1,3 @@
+<launch>    
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find kimm_indydcp3)/rviz/view.rviz" />
+</launch>

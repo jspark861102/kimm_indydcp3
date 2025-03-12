@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>kimm_indydcp3</name>
+  <version>0.0.1</version>
+  <description>The kimm_indydcp3 package</description>
+
+  <maintainer email="jspark2090@kimm.re.kr">Jinseong Park</maintainer>
+
+  <license>MIT</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>eigen</build_depend>
+
+  <depend>controller_interface</depend>
+  <depend>dynamic_reconfigure</depend>  
+  <depend>geometry_msgs</depend>
+  <depend>hardware_interface</depend>  
+  <depend>pluginlib</depend>
+  <depend>realtime_tools</depend>
+  <depend>roscpp</depend>
+  <depend>robotiq_2f_gripper_control</depend>
+  <depend>robotiq_2f_gripper_msgs</depend>  
+  <depend>neuromeka</depend>  
+  
+  <exec_depend>message_runtime</exec_depend>  
+  <exec_depend>rospy</exec_depend>  
+  <depend>tf</depend>    
+  <depend>tf_conversions</depend>    
+
+  <build_depend>libgrpc++-dev</build_depend>
+  <exec_depend>libgrpc++-dev</exec_depend>
+  <build_depend>protobuf-compiler</build_depend>
+  <exec_depend>protobuf-compiler</exec_depend>
+</package>

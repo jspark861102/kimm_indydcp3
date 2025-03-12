@@ -1,0 +1,15 @@
+<launch>         
+    <arg name="load_gripper" default="false" />          
+    
+    <param name="robot_description" textfile="$(find ranger_indy_description)/urdf/ranger_indy.urdf" />            
+    <!-- <param name="robot_description" textfile="$(find indy_description)/urdf_files/indy7.urdf" />             -->
+
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="true">        
+        <remap from="joint_states" to="joint_states" />   
+        <remap from="robot_description" to="robot_description" />             
+        <param name="publish_frequency" value="50" />
+        <param name="ignore_timestamp" value="true" />
+        
+    </node> 
+
+</launch>

@@ -1,0 +1,28 @@
+<launch>         
+    <arg name="load_gripper" default="true" />          
+    <arg name="load_robotiq_ft_sensor" default="false" />          
+    
+    <param name="robot_description" textfile="$(find ranger_indy_description)/urdf/ranger_indy.urdf" />                
+    <param name="load_gripper" type="bool" value="$(arg load_gripper)"/>    
+    <param name="load_robotiq_ft_sensor" type="bool" value="$(arg load_robotiq_ft_sensor)"/>
+
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="true">        
+        <remap from="joint_states" to="joint_states" />   
+        <remap from="robot_description" to="robot_description" />             
+        <param name="publish_frequency" value="50" />
+    </node> 
+
+    <node name="kimm_indydcp3" pkg="kimm_indydcp3" args="-keyboard" type="kimm_example" output="screen">                
+    </node>      
+
+    <group ns="joy_teleop">                
+        <rosparam command="load" file="$(find kimm_indydcp3)/config/teleop_ps4_phri.yaml" />                      
+        <node pkg="joy" type="joy_node" name="joy_node" />
+        <node pkg="teleop_twist_joy" type="teleop_node" name="teleop_twist_joy"/>
+    </group>
+
+    <node pkg="twist_mux" type="twist_mux" name="twist_mux">
+    <rosparam command="load" file="$(find kimm_indydcp3)/config/twist_mux.yaml" />
+    <remap from="cmd_vel_out" to="ranger/cmd_vel"/>
+    </node>
+</launch>
